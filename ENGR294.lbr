@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -1657,6 +1657,14 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <pad name="P$4" x="7.112" y="-2.54" drill="1.524"/>
 <pad name="P$5" x="8.382" y="-5.08" drill="1.524"/>
 </package>
+<package name="0.1X6">
+<pad name="P$1" x="0" y="0" drill="0.8" diameter="1.4224" shape="offset" rot="R180"/>
+<pad name="P$2" x="0" y="-2.54" drill="0.8" diameter="1.4224" shape="offset" rot="R180"/>
+<pad name="P$3" x="0" y="-5.08" drill="0.8" diameter="1.4224" shape="offset" rot="R180"/>
+<pad name="P$4" x="0" y="-7.62" drill="0.8" diameter="1.4224" shape="offset" rot="R180"/>
+<pad name="P$5" x="0" y="-10.16" drill="0.8" diameter="1.4224" shape="offset" rot="R180"/>
+<pad name="P$6" x="0" y="-12.7" drill="0.8" diameter="1.4224" shape="offset" rot="R180"/>
+</package>
 </packages>
 <packages3d>
 <package3d name="SMD2,54-5,08" urn="urn:adsk.eagle:package:30841/1" type="box">
@@ -2254,6 +2262,22 @@ For Reference, see Amotec Display part ADM0802A (http://amotec-display.com/pdf/A
 <wire x1="0" y1="-5.08" x2="-12.7" y2="-5.08" width="0.254" layer="94"/>
 <wire x1="-12.7" y1="-2.54" x2="-10.16" y2="-2.54" width="0.254" layer="94"/>
 </symbol>
+<symbol name="PCM5102A">
+<pin name="SCK" x="-5.08" y="0" length="middle"/>
+<pin name="BCK" x="-5.08" y="-2.54" length="middle"/>
+<pin name="DIN" x="-5.08" y="-5.08" length="middle"/>
+<pin name="LRCK" x="-5.08" y="-7.62" length="middle"/>
+<pin name="GND" x="-5.08" y="-10.16" length="middle"/>
+<pin name="VIN" x="-5.08" y="-12.7" length="middle"/>
+<wire x1="0" y1="2.54" x2="0" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="0" y1="-15.24" x2="38.1" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="38.1" y1="-15.24" x2="38.1" y2="2.54" width="0.254" layer="94"/>
+<wire x1="38.1" y1="2.54" x2="0" y2="2.54" width="0.254" layer="94"/>
+<wire x1="35.56" y1="0" x2="35.56" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="35.56" y1="-17.78" x2="27.94" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="27.94" y1="-17.78" x2="27.94" y2="0" width="0.254" layer="94"/>
+<wire x1="27.94" y1="0" x2="35.56" y2="0" width="0.254" layer="94"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="RESISTOR" prefix="R">
@@ -2722,7 +2746,7 @@ Pogo pins- HW-11044</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="I2SDAC">
+<deviceset name="ADAFRUIT_I2SDAC">
 <gates>
 <gate name="G$1" symbol="UDA1334" x="-7.62" y="0"/>
 </gates>
@@ -3205,6 +3229,26 @@ Changed DIP package to have round (not oval) pin pads
 <connect gate="G$1" pin="P$3" pad="P$3"/>
 <connect gate="G$1" pin="P$4" pad="P$4"/>
 <connect gate="G$1" pin="P$5" pad="P$5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PCM5102A">
+<gates>
+<gate name="G$1" symbol="PCM5102A" x="5.08" y="0"/>
+</gates>
+<devices>
+<device name="" package="0.1X6">
+<connects>
+<connect gate="G$1" pin="BCK" pad="P$2"/>
+<connect gate="G$1" pin="DIN" pad="P$3"/>
+<connect gate="G$1" pin="GND" pad="P$5"/>
+<connect gate="G$1" pin="LRCK" pad="P$4"/>
+<connect gate="G$1" pin="SCK" pad="P$1"/>
+<connect gate="G$1" pin="VIN" pad="P$6"/>
 </connects>
 <technologies>
 <technology name=""/>
